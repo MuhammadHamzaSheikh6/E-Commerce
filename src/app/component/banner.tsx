@@ -1,13 +1,8 @@
 "use client";
-import Image from 'next/image';
-import { FaStar } from 'react-icons/fa';
-
 import { useState, useEffect } from 'react';
-import FirstRowProduct from './firstproduct';
-import SecondRow from './secondrow';
 
 const images = [
-  { src: '/banner/1banner.png', alt: 'Image 1' }, // Update with actual image paths
+  { src: '/banner/1banner.png', alt: 'Image 1' }, 
   { src: '/banner/2banner.png', alt: 'Image 2' },
   { src: '/banner/3banner.png', alt: 'Image 3' },
 ];
@@ -32,11 +27,10 @@ export default function Banner() {
   }, []);
 
   return (
-
-    <div className="mt-[70px] relative w-full h-full overflow-hiddenn">
+    <div className="mt-[70px] relative w-full h-full overflow-hidden">
       {/* Images */}
       <div
-        className="flex transition-transform duration-500"
+        className="flex transition-transform duration-500 ease-in-out"
         style={{ transform: `translateX(-${currentSlide * 100}%)` }}
       >
         {images.map((image, index) => (
@@ -47,25 +41,11 @@ export default function Banner() {
             <img
               src={image.src}
               alt={image.alt}
-              className="w-full h-full object-contain"  // Use 'object-contain' for full image display without cropping
+              className="w-full h-full object-contain"
             />
           </div>
         ))}
       </div>
-
-      {/* Next and Previous Buttons
-      <button
-        onClick={prevSlide}
-        className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full"
-      >
-        Prev
-      </button>
-      <button
-        onClick={nextSlide}
-        className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full"
-      >
-        Next
-      </button> */}
 
       {/* Dots for navigation */}
       <div className="absolute bottom-4 w-full flex justify-center space-x-2">
@@ -78,5 +58,5 @@ export default function Banner() {
         ))}
       </div>
     </div>
-  )
+  );
 }
